@@ -6,14 +6,18 @@ set ns [new Simulator]
 
 $ns rtproto DV
 
-$ns color 1 Green
-$ns color 2 Pink
-$ns color 3 Orange
-$ns color 4 Yellow
-$ns color 5 Cyan
-$ns color 6 Red
-$ns color 7 Purple
-$ns color 8 Blue
+set colors {}
+# Generate random colors
+while {[llength $colors] < $k} {
+    set r [myRand 1 0xFF]
+    set g [myRand 1 0xFF]
+    set b [myRand 1 0xFF]
+    set c [format "#%02x%02x%02x" $r $g $b]
+    if {$c ni $colors} {
+		$ns color [llength $colors] $c
+    	lappend colors $c
+    }
+}
 
 #Open the nam trace file
 set nf [open out.nam w]
