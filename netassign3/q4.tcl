@@ -3,19 +3,6 @@ scan $data "%d %d" N k
 
 set ns  [new Simulator]
 
-set colors {}
-# Generate random colors
-while {[llength $colors] < $k} {
-    set r [myRand 1 0xFF]
-    set g [myRand 1 0xFF]
-    set b [myRand 1 0xFF]
-    set c [format "#%02x%02x%02x" $r $g $b]
-    if {$c ni $colors} {
-		$ns color [llength $colors] $c
-    	lappend colors $c
-    }
-}
-
 set nf [open out.nam w]
 $ns namtrace-all $nf
 
@@ -26,6 +13,15 @@ proc finish {} {
     exec nam out.nam
     exit 0
 }
+
+$ns color 0 Yellow
+$ns color 1 Green
+$ns color 2 Red
+$ns color 3 Blue
+$ns color 4 Orange
+$ns color 5 Pink
+$ns color 6 Purple
+$ns color 7 Cyan
 
 for {set i 0} {$i < $N} {incr i} {
 	set n($i) [$ns node]
