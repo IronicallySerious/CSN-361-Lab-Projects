@@ -67,13 +67,13 @@ int main()
 		printf("\nfile descriptor %d received\n", sockfd);
 
 	while (1) {
-		printf("\nPlease enter file name to receive:\n");
+		printf("\nFile name to receive:\n");
 		scanf("%s", net_buf);
 		sendto(sockfd, net_buf, NET_BUF_SIZE,
 			sendrecvflag, (struct sockaddr*)&addr_con,
 			addrlen);
 
-		printf("\n---------Data Received---------\n");
+		printf("\n-Received data-\n");
 
 		while (1) {
 			// receive
@@ -87,7 +87,7 @@ int main()
 				break;
 			}
 		}
-		printf("\n-------------------------------\n");
+		printf("\n--\n");
 	}
 	return 0;
 }

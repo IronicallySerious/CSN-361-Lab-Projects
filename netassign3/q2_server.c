@@ -77,7 +77,7 @@ int main()
 
 	// bind()
 	if (bind(sockfd, (struct sockaddr *)&addr_con, sizeof(addr_con)) == 0)
-		printf("\nSuccessfully binded!\n");
+		printf("\n\n");
 	else
 		printf("\nBinding Failed!\n");
 
